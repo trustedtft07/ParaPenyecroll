@@ -1,0 +1,17 @@
+services:
+  videofeed-backend:
+    build: .
+    container_name: videofeed-backend
+    restart: unless-stopped
+    ports:
+      - "5050:5050"
+    devices:
+      - "/dev/dri:/dev/dri"
+    volumes:
+      - ./data:/data
+    environment:
+      - DATA_DIR=/data
+      - PORT=5050
+      - TZ=Asia/Jakarta
+    mem_limit: 2g
+    cpus: "4.0"
